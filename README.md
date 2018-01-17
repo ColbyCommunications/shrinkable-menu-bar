@@ -69,10 +69,10 @@ To use the default styles, import this library's CSS into your project via a Sas
 @import 'shrinkable-menu-bar/src/css/main.css';
 ```
 
-Or import this library's PostCSS-processed CSS in with an HTML `link` tag:
+Or import this library's PostCSS-processed CSS with an HTML `link` tag:
 
 ```HTML
-<link rel="stylesheet" type="text/css" href="node_modules/shrinkable-menu-bar/dist/shrinkable-menu-bar.min.css" />
+<link rel="stylesheet" href="node_modules/shrinkable-menu-bar/dist/shrinkable-menu-bar.min.css" />
 ```
 
 ### HTML
@@ -98,4 +98,4 @@ The HTML for the menu requires a certain structure. See [this file](example/src/
 </nav>
 ```
 
-The relation of the classes to each other is what happens. The HTML elements (`nav`, `ul`, etc.) don't affect the functionality of this library.
+The relation of the classes to each other is what matters. The HTML elements (`nav`, `ul`, etc.) don't.
