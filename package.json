@@ -12,12 +12,13 @@
       "webpack --config webpack.build.config.babel.js && webpack -p && webpack -p --config webpack.build.config.babel.js",
     "lint": "eslint src/js",
     "stylelint": "stylelint src/css --fix",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "test": "npm run lint && npm run stylelint"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run prepare",
-      "pre-push": "npm run lint && npm run stylelint"
+      "pre-push": "npm test"
     }
   },
   "devDependencies": {
@@ -42,16 +43,15 @@
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.15.0-beta.16",
     "postcss-color-function": "^4.0.1",
-    "postcss-custom-props-themes": "^0.1.4",
     "postcss-loader": "^2.0.10",
     "style-loader": "^0.19.1",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0",
+    "stylelint-order": "^0.8.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.10.1"
   },
   "dependencies": {
-    "click-outside": "^2.0.2",
-    "stylelint": "^8.4.0",
-    "stylelint-config-standard": "^18.0.0",
-    "stylelint-order": "^0.8.0"
+    "click-outside": "^2.0.2"
   }
 }
