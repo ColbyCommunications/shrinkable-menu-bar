@@ -88,7 +88,7 @@ The HTML for the menu requires a certain structure. See [this file](example/src/
       <li class="shrinkable__item">
           <a class="shrinkable__btn" href="#">Lorem ipsum dolor sit amet</a>
       </li>
-      <li class="shrinkable__item shrinkable__has-submenu">
+      <li class="shrinkable__item">
           <a class="shrinkable__btn" href="#">FAQ</a>
       </li>
       <li class="shrinkable__item">
