@@ -1,6 +1,6 @@
 # shrinkable-menu-bar
 
-Collapses a single-line menu bar's overflowing elements into a hamburger. Also handles submenus.
+Collapses a single-line menu bar's overflowing elements into a hamburger. Also handles submenus. [See the demo](https://colbycommunications.github.io/shrinkable-menu-bar/example/).
 
 ## Install
 
