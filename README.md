@@ -1,6 +1,6 @@
-# shrinkable-menu-bar
+# shrinkable-menu
 
-Collapses a single-line menu bar's overflowing elements into a hamburger. Also handles submenus. [See the demo](https://colbycommunications.github.io/shrinkable-menu-bar/example/).
+Collapses a single-line menu bar's overflowing elements into a hamburger. Also handles submenus. [See the demo](https://colbycommunications.github.io/shrinkable-menu/example/).
 
 ## Install
 
@@ -21,7 +21,7 @@ yarn add shrinkable-menu
 Create an instance of `ShrinkableMenu`. Call the instance's `shouldStart` method to check whether the necessary parts exist on the page, then run its `start` method.
 
 ```Javascript
-import ShrinkableMenu from 'shrinkable-menu-bar';
+import ShrinkableMenu from 'shrinkable-menu';
 
 window.addEventListener('load', () => {
   const yourOptions = {
@@ -40,7 +40,7 @@ window.addEventListener('load', () => {
 Or use the shorthand `startShrinkableMenu` function.
 
 ```Javascript
-import { startShrinkableMenu } from 'shrinkable-menu-bar';
+import { startShrinkableMenu } from 'shrinkable-menu';
 
 window.addEventListener('load', () => {
   const yourOptions = {
@@ -66,13 +66,13 @@ This library uses [BEM-style](http://getbem.com/naming/) naming for CSS classes.
 To use the default styles, import this library's CSS into your project via a Sass or PostCSS import:
 
 ```CSS
-@import 'shrinkable-menu-bar/src/css/main.css';
+@import 'shrinkable-menu/src/css/main.css';
 ```
 
 Or import this library's PostCSS-processed CSS with an HTML `link` tag:
 
 ```HTML
-<link rel="stylesheet" href="node_modules/shrinkable-menu-bar/dist/shrinkable-menu-bar.min.css" />
+<link rel="stylesheet" href="node_modules/shrinkable-menu/dist/shrinkable-menu.min.css" />
 ```
 
 ### HTML
