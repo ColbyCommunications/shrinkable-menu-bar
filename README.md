@@ -5,13 +5,13 @@ Collapses a single-line menu bar's overflowing elements into a hamburger. Also h
 ## Install
 
 ```
-npm install shrinkable-menu-bar
+npm install shrinkable-menu
 ```
 
 OR
 
 ```
-yarn add shrinkable-menu-bar
+yarn add shrinkable-menu
 ```
 
 ## Usage
