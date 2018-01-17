@@ -18,7 +18,7 @@ yarn add shrinkable-menu-bar
 
 ### Javascript
 
-Import the library and instantiate the class. Call the instance's `shouldRun` method to check whether the necessary parts exist on the page, then run its `run` method.
+Create an instance of `ShrinkableMenu`. Call the instance's `shouldStart` method to check whether the necessary parts exist on the page, then run its `start` method.
 
 ```Javascript
 import ShrinkableMenu from 'shrinkable-menu-bar';
