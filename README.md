@@ -81,7 +81,7 @@ The HTML for the menu requires a certain structure. See [this file](example/src/
 
 ```HTML
 <nav class="shrinkable">
-  <ul class="shrinkable__menu small-5">
+  <ul class="shrinkable__menu">
       <li class="shrinkable__item">
           <a class="shrinkable__btn" href="#">Staff</a>
       </li>
