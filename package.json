@@ -1,15 +1,13 @@
 {
   "name": "shrinkable-menu",
-  "version": "1.0.0",
-  "description":
-    "Collapses a single-line menu bar's overflowing elements into a hamburger.",
+  "version": "1.0.1",
+  "description": "Collapses a single-line menu bar's overflowing elements into a hamburger.",
   "main": "src/js/index.js",
   "author": "John Watkins <john.watkins@colby.edu>",
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server",
-    "build":
-      "webpack --config webpack.build.config.babel.js && webpack -p && webpack -p --config webpack.build.config.babel.js",
+    "build": "webpack --config webpack.build.config.babel.js && webpack -p && webpack -p --config webpack.build.config.babel.js",
     "lint": "eslint src/js",
     "stylelint": "stylelint src/css --fix",
     "prepare": "npm run build",
