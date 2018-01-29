@@ -61,6 +61,10 @@ A string to pass to `document.querySelector` to select the menu's root element.
 
 This library uses [BEM-style](http://getbem.com/naming/) naming for CSS classes. The `className` string is prepended to all classes -- e.g. `shrinkable__item`, `shrinkable__button`.
 
+##### `outerContainerSelector` (string) Default: `html`
+
+A string to pass to `document.querySelector`. The found element will be the basis on which the shrinkable menu's width is determined. By default, the document's HTML element is used.
+
 ### CSS
 
 To use the default styles, import this library's CSS into your project via a Sass or PostCSS import:

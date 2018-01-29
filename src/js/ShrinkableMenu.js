@@ -14,15 +14,19 @@ class ShrinkableMenu {
       selector: '.shrinkable',
       classNamespace: 'shrinkable',
     });
+    this.outerContainer = args.outerContainer
+      ? document.querySelector(args.outerContainerSelector)
+      : document.querySelector('html');
     this.container = document.querySelector(this.args.selector);
     this.list = document.querySelector(`${this.args.selector}__menu`);
-    this.windowSize = 0;
+    this.outerContainerSize = 0;
     this.classNamespace = this.args.classNamespace;
     this.hamburger = null;
     this.extraMenu = null;
   }
 
-  shouldStart = () => this.container && this.list && this.classNamespace;
+  shouldStart = () =>
+    this.container && this.list && this.classNamespace && this.outerContainer;
 
   start() {
     this.onShrink();
@@ -87,17 +91,17 @@ class ShrinkableMenu {
   }
 
   onResize() {
-    if (window.innerWidth > this.windowSize) {
+    if (this.outerContainer.clientWidth > this.outerContainerSize) {
       this.onGrowth();
-    } else if (window.innerWidth < this.windowSize) {
+    } else if (this.outerContainer.clientWidth < this.outerContainerSize) {
       this.onShrink();
     }
   }
 
   onShrink() {
-    this.windowSize = window.innerWidth;
+    this.outerContainerSize = this.outerContainer.clientWidth;
 
-    while (this.getButtonsWidth() > this.windowSize) {
+    while (this.getButtonsWidth() > this.outerContainerSize) {
       if (!this.hamburger) {
         this.initExtraMenu();
         return;
@@ -109,13 +113,13 @@ class ShrinkableMenu {
   }
 
   onGrowth() {
-    this.windowSize = window.innerWidth;
+    this.outerContainerSize = this.outerContainer.clientWidth;
 
     while (
       this.extraMenu &&
       this.extraMenu.children.length &&
       this.getButtonsWidth() + this.extraMenu.children[0].clientWidth <
-        this.windowSize
+        this.outerContainerSize
     ) {
       const firstItem = this.extraMenu.removeChild(this.extraMenu.children[0]);
       this.list.append(firstItem);
