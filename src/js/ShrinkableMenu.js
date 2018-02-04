@@ -92,7 +92,6 @@ class ShrinkableMenu {
   }
 
   onResize() {
-    console.log(this.outerContainer.offsetWidth, this.outerContainerSize);
     if (this.outerContainer.offsetWidth > this.outerContainerSize) {
       this.onGrowth();
     } else if (this.outerContainer.offsetWidth < this.outerContainerSize) {
@@ -102,9 +101,6 @@ class ShrinkableMenu {
 
   onShrink() {
     this.outerContainerSize = this.outerContainer.offsetWidth;
-
-    console.log('hi', this.outerContainer);
-    console.log(this.getButtonsWidth(), this.outerContainerSize);
 
     while (this.getButtonsWidth() > this.outerContainerSize) {
       if (!this.hamburger) {

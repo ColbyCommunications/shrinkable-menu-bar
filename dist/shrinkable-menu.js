@@ -597,8 +597,8 @@ var ShrinkableMenu = function () {
     };
 
     this.getButtonsWidth = function () {
-      return (_this.hamburger ? _this.hamburger.clientWidth : 0) + [].concat(_toConsumableArray(_this.list.children)).reduce(function (sum, element) {
-        return sum + element.clientWidth;
+      return (_this.hamburger ? _this.hamburger.offsetWidth : 0) + [].concat(_toConsumableArray(_this.list.children)).reduce(function (sum, element) {
+        return sum + element.offsetWidth;
       }, 0);
     };
 
@@ -612,7 +612,8 @@ var ShrinkableMenu = function () {
       selector: '.shrinkable',
       classNamespace: 'shrinkable'
     });
-    this.outerContainer = args.outerContainer ? document.querySelector(args.outerContainerSelector) : document.querySelector('html');
+
+    this.outerContainer = args.outerContainerSelector ? document.querySelector(args.outerContainerSelector) : document.querySelector('html');
     this.container = document.querySelector(this.args.selector);
     this.list = document.querySelector(this.args.selector + '__menu');
     this.outerContainerSize = 0;
@@ -682,16 +683,20 @@ var ShrinkableMenu = function () {
   }, {
     key: 'onResize',
     value: function onResize() {
-      if (this.outerContainer.clientWidth > this.outerContainerSize) {
+      console.log(this.outerContainer.offsetWidth, this.outerContainerSize);
+      if (this.outerContainer.offsetWidth > this.outerContainerSize) {
         this.onGrowth();
-      } else if (this.outerContainer.clientWidth < this.outerContainerSize) {
+      } else if (this.outerContainer.offsetWidth < this.outerContainerSize) {
         this.onShrink();
       }
     }
   }, {
     key: 'onShrink',
     value: function onShrink() {
-      this.outerContainerSize = this.outerContainer.clientWidth;
+      this.outerContainerSize = this.outerContainer.offsetWidth;
+
+      console.log('hi', this.outerContainer);
+      console.log(this.getButtonsWidth(), this.outerContainerSize);
 
       while (this.getButtonsWidth() > this.outerContainerSize) {
         if (!this.hamburger) {
@@ -706,9 +711,9 @@ var ShrinkableMenu = function () {
   }, {
     key: 'onGrowth',
     value: function onGrowth() {
-      this.outerContainerSize = this.outerContainer.clientWidth;
+      this.outerContainerSize = this.outerContainer.offsetWidth;
 
-      while (this.extraMenu && this.extraMenu.children.length && this.getButtonsWidth() + this.extraMenu.children[0].clientWidth < this.outerContainerSize) {
+      while (this.extraMenu && this.extraMenu.children.length && this.getButtonsWidth() + this.extraMenu.children[0].offsetWidth < this.outerContainerSize) {
         var firstItem = this.extraMenu.removeChild(this.extraMenu.children[0]);
         this.list.append(firstItem);
 
