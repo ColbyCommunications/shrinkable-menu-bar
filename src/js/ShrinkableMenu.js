@@ -14,7 +14,8 @@ class ShrinkableMenu {
       selector: '.shrinkable',
       classNamespace: 'shrinkable',
     });
-    this.outerContainer = args.outerContainer
+
+    this.outerContainer = args.outerContainerSelector
       ? document.querySelector(args.outerContainerSelector)
       : document.querySelector('html');
     this.container = document.querySelector(this.args.selector);
@@ -40,9 +41,9 @@ class ShrinkableMenu {
   }
 
   getButtonsWidth = () =>
-    (this.hamburger ? this.hamburger.clientWidth : 0) +
+    (this.hamburger ? this.hamburger.offsetWidth : 0) +
     [...this.list.children].reduce(
-      (sum, element) => sum + element.clientWidth,
+      (sum, element) => sum + element.offsetWidth,
       0
     );
 
@@ -91,15 +92,19 @@ class ShrinkableMenu {
   }
 
   onResize() {
-    if (this.outerContainer.clientWidth > this.outerContainerSize) {
+    console.log(this.outerContainer.offsetWidth, this.outerContainerSize);
+    if (this.outerContainer.offsetWidth > this.outerContainerSize) {
       this.onGrowth();
-    } else if (this.outerContainer.clientWidth < this.outerContainerSize) {
+    } else if (this.outerContainer.offsetWidth < this.outerContainerSize) {
       this.onShrink();
     }
   }
 
   onShrink() {
-    this.outerContainerSize = this.outerContainer.clientWidth;
+    this.outerContainerSize = this.outerContainer.offsetWidth;
+
+    console.log('hi', this.outerContainer);
+    console.log(this.getButtonsWidth(), this.outerContainerSize);
 
     while (this.getButtonsWidth() > this.outerContainerSize) {
       if (!this.hamburger) {
@@ -113,12 +118,12 @@ class ShrinkableMenu {
   }
 
   onGrowth() {
-    this.outerContainerSize = this.outerContainer.clientWidth;
+    this.outerContainerSize = this.outerContainer.offsetWidth;
 
     while (
       this.extraMenu &&
       this.extraMenu.children.length &&
-      this.getButtonsWidth() + this.extraMenu.children[0].clientWidth <
+      this.getButtonsWidth() + this.extraMenu.children[0].offsetWidth <
         this.outerContainerSize
     ) {
       const firstItem = this.extraMenu.removeChild(this.extraMenu.children[0]);

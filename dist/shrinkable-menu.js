@@ -593,7 +593,7 @@ var ShrinkableMenu = function () {
     this.onHamburgerClick = this.onHamburgerClick.bind(this);
 
     this.shouldStart = function () {
-      return _this.container && _this.list && _this.classNamespace;
+      return _this.container && _this.list && _this.classNamespace && _this.outerContainer;
     };
 
     this.getButtonsWidth = function () {
@@ -612,9 +612,10 @@ var ShrinkableMenu = function () {
       selector: '.shrinkable',
       classNamespace: 'shrinkable'
     });
+    this.outerContainer = args.outerContainer ? document.querySelector(args.outerContainerSelector) : document.querySelector('html');
     this.container = document.querySelector(this.args.selector);
     this.list = document.querySelector(this.args.selector + '__menu');
-    this.windowSize = 0;
+    this.outerContainerSize = 0;
     this.classNamespace = this.args.classNamespace;
     this.hamburger = null;
     this.extraMenu = null;
@@ -681,18 +682,18 @@ var ShrinkableMenu = function () {
   }, {
     key: 'onResize',
     value: function onResize() {
-      if (window.innerWidth > this.windowSize) {
+      if (this.outerContainer.clientWidth > this.outerContainerSize) {
         this.onGrowth();
-      } else if (window.innerWidth < this.windowSize) {
+      } else if (this.outerContainer.clientWidth < this.outerContainerSize) {
         this.onShrink();
       }
     }
   }, {
     key: 'onShrink',
     value: function onShrink() {
-      this.windowSize = window.innerWidth;
+      this.outerContainerSize = this.outerContainer.clientWidth;
 
-      while (this.getButtonsWidth() > this.windowSize) {
+      while (this.getButtonsWidth() > this.outerContainerSize) {
         if (!this.hamburger) {
           this.initExtraMenu();
           return;
@@ -705,9 +706,9 @@ var ShrinkableMenu = function () {
   }, {
     key: 'onGrowth',
     value: function onGrowth() {
-      this.windowSize = window.innerWidth;
+      this.outerContainerSize = this.outerContainer.clientWidth;
 
-      while (this.extraMenu && this.extraMenu.children.length && this.getButtonsWidth() + this.extraMenu.children[0].clientWidth < this.windowSize) {
+      while (this.extraMenu && this.extraMenu.children.length && this.getButtonsWidth() + this.extraMenu.children[0].clientWidth < this.outerContainerSize) {
         var firstItem = this.extraMenu.removeChild(this.extraMenu.children[0]);
         this.list.append(firstItem);
 
